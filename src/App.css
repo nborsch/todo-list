@@ -1,0 +1,43 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+input {
+  height: 30px;
+}
+
+button {
+  padding-bottom: 15px;
+  border: 1px solid;
+}
+
+.add-todo {
+  margin: 20px 0;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px
+}
+
+ul {
+  margin-bottom: 30px;
+}
+
+.done-todos-todo {
+  text-decoration: line-through;
+  font-style: italic;
+}
