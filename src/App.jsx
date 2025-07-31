@@ -20,6 +20,12 @@ function App() {
 
   function todoCompleted(id){
     console.log(id)
+
+    setAllTodos(prevAllTodos => {
+      return prevAllTodos.map(prevToDo => {
+        return prevToDo.id === id ? { ...prevToDo, status: true } : prevToDo
+      })
+    })
   }
 
   function getTodoElements(){
