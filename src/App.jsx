@@ -13,16 +13,26 @@ function App() {
     },
     {
       text: "Task 2",
-      status: true,
+      status: false,
       id: 97
     }
   ])
+
+  function todoCompleted(id){
+    console.log(id)
+  }
 
   function getTodoElements(){
     return allTodos.filter(todo => !todo.status)
     .map(todo => {
       return (
-        <li id={todo.id} key={todo.id}>{todo.text}</li>
+        <li id={todo.id} key={todo.id}>
+          <form action={() => todoCompleted(todo.id)}>
+            <button type="submit" className="done-todo-button">
+              done
+            </button> {todo.text}
+          </form>
+        </li>
       )
     })
   }
@@ -41,10 +51,10 @@ function App() {
   function addTodo(formData){
     // get new todo text
     const newTodo = formData.get('todo')
+    // update id count
+    setCount(prevCount => prevCount + 1)
     // update array of todo objects
     setAllTodos(prevTodos => {
-      // update id count
-      setCount(prevCount => prevCount + 1)
       return [
         ...prevTodos,
         {
@@ -63,7 +73,7 @@ function App() {
       </header>
       <main>
         <section className="add-todo">
-          <form action={addTodo}>
+          <form action={addTodo} className="add-todo-form">
             <input name="todo" className="add-todo-input"></input>
             <button type='submit' className="add-todo-button">Add new todo</button>
           </form>
