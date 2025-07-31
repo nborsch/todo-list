@@ -1,5 +1,8 @@
 import React from 'react'
 import './App.css'
+import AddToDo from './components/AddToDo'
+import TodoList from './components/TodoList'
+import DoneList from './components/DoneList'
 
 function App() {
 
@@ -19,8 +22,6 @@ function App() {
   ])
 
   function todoCompleted(id){
-    console.log(id)
-
     setAllTodos(prevAllTodos => {
       return prevAllTodos.map(prevToDo => {
         return prevToDo.id === id ? { ...prevToDo, status: true } : prevToDo
@@ -78,26 +79,9 @@ function App() {
         <h1>TODO list</h1>
       </header>
       <main>
-        <section className="add-todo">
-          <form action={addTodo} className="add-todo-form">
-            <input name="todo" className="add-todo-input"></input>
-            <button type='submit' className="add-todo-button">Add new todo</button>
-          </form>
-        </section>
-        <section>
-          <h3>Current tasks</h3>
-          <ul>
-            {getTodoElements()}
-          </ul>
-          <hr />
-        </section>
-        <section className='done-todos'>
-          <h3>Done tasks</h3>
-          <ul>
-            {getCompletedElements()}
-          </ul>
-          <hr />
-        </section>
+        <AddToDo addTodo={addTodo} />
+        <TodoList getTodoElements={getTodoElements} />
+        <DoneList getCompletedElements={getCompletedElements}/>
       </main>
     </>
   )
