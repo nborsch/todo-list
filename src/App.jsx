@@ -36,16 +36,6 @@ function App() {
     return allTodos.filter(todo => todo.status)
   }
 
-  const completedElements = function(){
-    return completedFilter().map(todo => {
-      return (
-        <li id={todo.id} key={todo.id} className='done-todos-todo'>
-          {todo.text} 
-        </li>
-      )
-    })
-  }
-
   function addTodo(formData){
     // get new todo text
     const newTodo = formData.get('todo')
@@ -72,7 +62,7 @@ function App() {
       <main>
         <AddToDo addTodo={addTodo} />
         <TodoList todoFilter={todoFilter} todoCompleted={todoCompleted}/>
-        <CompletedList completedElements={completedElements()}/>
+        <CompletedList completedFilter={completedFilter}/>
       </main>
     </>
   )
