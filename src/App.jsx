@@ -4,19 +4,18 @@ import AddToDo from './components/AddToDo'
 import TodoList from './components/TodoList'
 import DoneList from './components/DoneList'
 
+let count = 0
 function App() {
-
-  const [count, setCount] = React.useState(0)
 
   const [allTodos, setAllTodos] =  React.useState([
     {
       text: "Task 1",
-      status: false,
+      status: true,
       id: 98
     },
     {
       text: "Task 2",
-      status: false,
+      status: true,
       id: 97
     }
   ])
@@ -58,8 +57,6 @@ function App() {
   function addTodo(formData){
     // get new todo text
     const newTodo = formData.get('todo')
-    // update id count
-    setCount(prevCount => prevCount + 1)
     // update array of todo objects
     setAllTodos(prevTodos => {
       return [
@@ -71,6 +68,8 @@ function App() {
         }
       ]
     })
+    // update id count
+    count++
   }
 
   return (
