@@ -1,7 +1,7 @@
 export default function TodoList(props){
 
   const todoElements = function (){
-    return props.todoFilter().map(todo => {
+    return props.todoFilter.map(todo => {
       return (
         <li id={todo.id} key={todo.id}>
           <form action={() => props.todoCompleted(todo.id)}>

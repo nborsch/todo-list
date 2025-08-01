@@ -1,7 +1,7 @@
 export default function DoneList(props){
 
   const completedElements = function(){
-    return props.completedFilter().map(todo => {
+    return props.completedFilter.map(todo => {
       return (
         <li id={todo.id} key={todo.id} className='done-todos-todo'>
           {todo.text} 

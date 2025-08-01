@@ -4,7 +4,9 @@ import AddToDo from './components/AddToDo'
 import TodoList from './components/TodoList'
 import CompletedList from './components/CompletedList'
 
+// counter for id uniqueness
 let count = 0
+
 function App() {
 
   const [allTodos, setAllTodos] =  React.useState([
@@ -28,13 +30,9 @@ function App() {
     })
   }
 
-  const todoFilter = function(){
-    return allTodos.filter(todo => !todo.status)
-  }
+  const todoFilter = allTodos.filter(todo => !todo.status)
 
-  const completedFilter = function(){
-    return allTodos.filter(todo => todo.status)
-  }
+  const completedFilter = allTodos.filter(todo => todo.status)
 
   function addTodo(formData){
     // get new todo text
