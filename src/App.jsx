@@ -29,7 +29,7 @@ function App() {
     })
   }
 
-  function getTodoElements(){
+  const todoElements = function (){
     return allTodos.filter(todo => !todo.status)
     .map(todo => {
       return (
@@ -44,7 +44,7 @@ function App() {
     })
   }
 
-  function getCompletedElements(){
+  const completedElements = function(){
     return allTodos.filter(todo => todo.status)
       .map(todo => {
       return (
@@ -80,8 +80,8 @@ function App() {
       </header>
       <main>
         <AddToDo addTodo={addTodo} />
-        <TodoList getTodoElements={getTodoElements} />
-        <DoneList getCompletedElements={getCompletedElements}/>
+        <TodoList todoElements={todoElements()} />
+        <DoneList completedElements={completedElements()}/>
       </main>
     </>
   )
