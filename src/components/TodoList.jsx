@@ -1,7 +1,7 @@
 export default function TodoList(props){
     return (
         <section>
-          <h3>Current tasks</h3>
+          <h3>Current todos</h3>
           <ul>
             {props.todoElements}
           </ul>

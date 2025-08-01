@@ -2,7 +2,7 @@ import React from 'react'
 import './App.css'
 import AddToDo from './components/AddToDo'
 import TodoList from './components/TodoList'
-import DoneList from './components/DoneList'
+import CompletedList from './components/CompletedList'
 
 let count = 0
 function App() {
@@ -28,9 +28,12 @@ function App() {
     })
   }
 
-  const todoElements = function (){
+  const todoFilter = function(){
     return allTodos.filter(todo => !todo.status)
-    .map(todo => {
+  }
+
+  const todoElements = function (){
+    return todoFilter().map(todo => {
       return (
         <li id={todo.id} key={todo.id}>
           <form action={() => todoCompleted(todo.id)}>
@@ -43,9 +46,12 @@ function App() {
     })
   }
 
-  const completedElements = function(){
+  const completedFilter = function(){
     return allTodos.filter(todo => todo.status)
-      .map(todo => {
+  }
+
+  const completedElements = function(){
+    return completedFilter().map(todo => {
       return (
         <li id={todo.id} key={todo.id} className='done-todos-todo'>
           {todo.text} 
@@ -80,7 +86,7 @@ function App() {
       <main>
         <AddToDo addTodo={addTodo} />
         <TodoList todoElements={todoElements()} />
-        <DoneList completedElements={completedElements()}/>
+        <CompletedList completedElements={completedElements()}/>
       </main>
     </>
   )
