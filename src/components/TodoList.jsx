@@ -1,7 +1,6 @@
 export default function TodoList(props){
 
-  const todoElements = function (){
-    return props.todoFilter.map(todo => {
+  const todoElements = props.todoFilter.map(todo => {
       return (
         <li id={todo.id} key={todo.id}>
           <form action={() => props.todoCompleted(todo.id)}>
@@ -12,14 +11,13 @@ export default function TodoList(props){
         </li>
       )
     })
-  }
 
 
   return (
       <section>
         <h3>Current todos</h3>
         <ul>
-          {todoElements()}
+          {todoElements}
         </ul>
         <hr />
       </section>
