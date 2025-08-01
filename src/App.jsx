@@ -20,7 +20,7 @@ function App() {
     }
   ])
 
-  function todoCompleted(id){
+  const todoCompleted = function(id){
     setAllTodos(prevAllTodos => {
       return prevAllTodos.map(prevToDo => {
         return prevToDo.id === id ? { ...prevToDo, status: true } : prevToDo
@@ -30,20 +30,6 @@ function App() {
 
   const todoFilter = function(){
     return allTodos.filter(todo => !todo.status)
-  }
-
-  const todoElements = function (){
-    return todoFilter().map(todo => {
-      return (
-        <li id={todo.id} key={todo.id}>
-          <form action={() => todoCompleted(todo.id)}>
-            <button type="submit" className="done-todo-button">
-              done
-            </button> {todo.text}
-          </form>
-        </li>
-      )
-    })
   }
 
   const completedFilter = function(){
@@ -85,7 +71,7 @@ function App() {
       </header>
       <main>
         <AddToDo addTodo={addTodo} />
-        <TodoList todoElements={todoElements()} />
+        <TodoList todoFilter={todoFilter} todoCompleted={todoCompleted}/>
         <CompletedList completedElements={completedElements()}/>
       </main>
     </>
